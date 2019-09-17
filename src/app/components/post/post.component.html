@@ -11,11 +11,20 @@
   </ion-label>
 </ion-item>
 
-<ion-slides pager="true" >
-  <ion-slide class="image-slide" [style]="background-image: url('/fotosgram/assets/perro-1.jpg')">
-     
+<ion-slides *ngIf="post.imgs.length > 1" >
+  <ion-slide *ngFor="let item of post.imgs" 
+  class="image-slide" 
+  [style]="(item | imagen: post.usuario._id) | domSanitizer">
+   
   </ion-slide>
 </ion-slides>
+<ion-slides *ngIf="post.imgs.length === 1" [options]="slideSoloOpts">
+  <ion-slide class="image-slide"
+  [style]="(post.imgs[0] | imagen: post.usuario._id) | domSanitizer">
+   
+  </ion-slide>
+</ion-slides>
+<app-mapa [coords]="post.coords" *ngIf="post.coords"></app-mapa>
 
 <ion-item lines="none">
   <ion-icon slot="start" name="heart-empty"></ion-icon>

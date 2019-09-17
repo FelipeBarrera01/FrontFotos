@@ -14,6 +14,9 @@ habilitado = true;
   constructor(private servicio: PostsService) {}
   ngOnInit(){
     this.siguientes();
+    this.servicio.nuevoPost.subscribe(post =>{
+        this.posts.unshift(post);
+    });
   }
   siguientes(event?, pull: boolean = false){
 

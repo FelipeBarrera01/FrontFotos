@@ -7,7 +7,11 @@ import { Post } from '../../interfaces/interfaces';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-@Input() post: Post[] = [];
+@Input() post: Post;
+slideSoloOpts = {
+  allowSlideNext: false,
+  allowSlidePrev: false
+};
   constructor() { }
 
   ngOnInit() {}
